@@ -1,10 +1,5 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-)
-
 // type RequestError struct {
 // 	StatusCode int
 
@@ -31,32 +26,32 @@ import (
 // 	fmt.Println("success!")
 // }
 
-type WrappedError struct {
-	Context string
-	Code    int
-	Err     error
-}
+// type WrappedError struct {
+// 	Context string
+// 	Code    int
+// 	Err     error
+// }
 
-func (w *WrappedError) Error() string {
-	return fmt.Sprintf("%d - %s: %v", w.Code, w.Context, w.Err)
-}
+// func (w *WrappedError) Error() string {
+// 	return fmt.Sprintf("%d - %s: %v", w.Code, w.Context, w.Err)
+// }
 
-func Wrap(info string, code int, err error) *WrappedError {
-	return &WrappedError{
-		Context: info,
-		Code:    code,
-		Err:     err,
-	}
-}
+// func Wrap(info string, code int, err error) *WrappedError {
+// 	return &WrappedError{
+// 		Context: info,
+// 		Code:    code,
+// 		Err:     err,
+// 	}
+// }
 
-func main() {
-	err := errors.New("boom!")
-	err = Wrap("main", 400, err)
+// func main() {
+// 	err := errors.New("boom!")
+// 	err = Wrap("main", 400, err)
 
-	//Exposing WrappedError methods
-	if we, err2 := err.(*WrappedError); err2 {
-		fmt.Println(we.Context, we.Code)
-	}
+// 	//Exposing WrappedError methods
+// 	if we, err2 := err.(*WrappedError); err2 {
+// 		fmt.Println(we.Context, we.Code)
+// 	}
 
-	fmt.Println(err)
-}
+// 	fmt.Println(err)
+// }
