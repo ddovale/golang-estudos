@@ -11,10 +11,28 @@ import (
 )
 
 func main() {
-	doGet()
-	doPost()
-	doFormPost()
-	doCustomPost()
+	doDanielzinhoGet()
+	// doGet()
+	// doPost()
+	// doFormPost()
+	// doCustomPost()
+}
+
+func doDanielzinhoGet() {
+
+	resp, err := http.Get("https://danielzinho.free.beeceptor.com/custom")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	log.Println(resp.StatusCode, "-", string(body))
 }
 
 func doGet() {
